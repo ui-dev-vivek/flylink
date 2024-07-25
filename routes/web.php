@@ -9,3 +9,4 @@ use App\Http\Controllers\Home;
 
 Route::get('/', [Home::class, 'index']);
 Route::get('/shortlink', [Shortlink::class, 'index']);
+Route::get('{urlCode}-', [Shortlink::class, 'redirect'])->name('redirect');
