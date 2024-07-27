@@ -16,7 +16,7 @@ class Authcontroller extends Controller
 {
      public function showRegisterForm()
     {
-        return view('auth.register');
+        return view('user.auth.register');
     }
     public function register(Request $request)
     {
