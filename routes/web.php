@@ -1,4 +1,4 @@
-s<?php
+<?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Shortlink;
@@ -7,6 +7,7 @@ use App\Http\Controllers\Biolinktree;
 use App\Http\Controllers\Sociallink;
 use App\Http\Controllers\Home;
 use App\Http\Controllers\User\Authcontroller;
+use App\Http\Controllers\User\Dashboard;
 
 Route::get('/', [Home::class, 'index']);
 Route::get('/shortlink', [Shortlink::class, 'index']);
@@ -28,8 +29,8 @@ Route::post('/forgot-password', [AuthController::class, 'sendResetLink']);
 Route::get('/reset-password/{token}', [AuthController::class, 'showResetPasswordForm'])->name('reset-password');
 Route::post('/reset-password', [AuthController::class, 'resetPassword']);
 
-Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+// Route::middleware('auth')->prefix('p')->group(function () {
+    Route::prefix('user')->group(function () {
+    Route::get('/',[Dashboard::class,'dashboard'])->name('dashboard');
+        
 });
