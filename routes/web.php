@@ -16,7 +16,7 @@ Route::get('{urlCode}+', [Shortlink::class, 'shwoShortLink'])->name('redirect');
 
 
 
-// User: 
+// User:
 
 
 Route::get('/register', [Authcontroller::class, 'showRegisterForm'])->name('register');
@@ -30,7 +30,6 @@ Route::get('/reset-password/{token}', [AuthController::class, 'showResetPassword
 Route::post('/reset-password', [AuthController::class, 'resetPassword']);
 
 // Route::middleware('auth')->prefix('p')->group(function () {
-    Route::prefix('user')->group(function () {
-    Route::get('/',[Dashboard::class,'dashboard'])->name('dashboard');
-        
+Route::prefix('user')->group(function () {
+    Route::get('/', [Dashboard::class, 'dashboard'])->name('dashboard');
 });
