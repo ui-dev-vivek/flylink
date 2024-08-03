@@ -52,9 +52,16 @@ class QuickShort extends Component
                 return;
             }
             $this->url = filter_var($this->url, FILTER_SANITIZE_URL);
-
+            
+            $maxAttempts = 10;
+            $attempts = 0;
             do {
+                if ($attempts >= $maxAttempts) {
+                    $this->errorMessage = 'Unable to generate a unique shortened URL. Please try again later.';
+                    return;
+                }
                 $shortenedUrl = Str::random(6);
+                $attempts++;
             } while (ShortLink::where('shortened_url', $shortenedUrl)->exists());
     
             $this->shortenedUrls[] = url('/') . '/' . $shortenedUrl . '-';
