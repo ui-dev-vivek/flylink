@@ -17,8 +17,9 @@ class Shortlink extends Controller
 
         return redirect($link->original_url);
     }
-    public function shwoShortLink($urlCode){
+    public function shwoShortLink($urlCode)
+    {
         $link = ModelsShortLink::where('shortened_url', $urlCode)->firstOrFail();
-        return $link;
+        return view('main.short_link_result', compact('link'));
     }
 }

@@ -1,4 +1,4 @@
-s<?php
+<?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Shortlink;
@@ -15,7 +15,7 @@ Route::get('{urlCode}+', [Shortlink::class, 'shwoShortLink'])->name('redirect');
 
 
 
-// User: 
+// User:
 
 
 Route::get('/register', [Authcontroller::class, 'showRegisterForm'])->name('register');

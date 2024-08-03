@@ -36,7 +36,7 @@ class QuickShort extends Component
 
         // Sanitize the URL
         $this->url = filter_var($this->url, FILTER_SANITIZE_URL);
-        
+
         $shortenedUrl = Str::random(6);
 
         // Update the shortened URLs array and serialize it
