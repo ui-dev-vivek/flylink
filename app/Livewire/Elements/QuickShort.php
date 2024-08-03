@@ -53,7 +53,10 @@ class QuickShort extends Component
             }
             $this->url = filter_var($this->url, FILTER_SANITIZE_URL);
 
-            $shortenedUrl = Str::random(6);
+            do {
+                $shortenedUrl = Str::random(6);
+            } while (ShortLink::where('shortened_url', $shortenedUrl)->exists());
+    
             $this->shortenedUrls[] = url('/') . '/' . $shortenedUrl . '-';
             Cookie::queue('shortened_urls', json_encode($this->shortenedUrls), 60 * 24 * 90);
 
